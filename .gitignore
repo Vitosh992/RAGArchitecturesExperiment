@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+
+# Experiment outputs
+results/
+
+# ML caches
+.cache/
+*.pt
+*.bin
+*.safetensors
+
+# HuggingFace / datasets
+.huggingface/
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log

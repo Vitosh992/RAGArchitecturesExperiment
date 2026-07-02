@@ -1,0 +1,47 @@
+# Конфигурация бенчмарка RAG (SciQ + RAGAS)
+
+experiment:
+  name: sciq_rag_benchmark
+  seed: 42
+  output_dir: results
+
+openrouter:
+  api_key_env: OPENROUTER_API_KEY
+  model: qwen/qwen-2.5-7b-instruct
+  judge_model: qwen/qwen-2.5-7b-instruct
+  max_tokens: 256
+  temperature: 0.1
+  site_url: http://localhost
+  site_name: SciQ RAG Benchmark
+
+dataset:
+  name: allenai/sciq
+  split: validation
+  max_samples: 800
+  corpus_from_support: true
+
+retrieval:
+  top_k: 5
+  bm25_candidates: 50
+  dense_candidates: 50
+
+models:
+  embedding: BAAI/bge-m3
+  reranker: BAAI/bge-reranker-v2-m3
+
+graph_rag:
+  min_cluster_size: 3
+  resolution: 1.0
+
+ragas:
+  metrics:
+    - faithfulness
+    - context_precision
+    - context_recall
+  timeout: 120
+  max_workers: 8
+
+pipelines:
+  - naive
+  - advanced
+  - graph
